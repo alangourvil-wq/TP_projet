@@ -49,4 +49,9 @@ public class EntrepriseService {
             client.close();
         }
     }
+
+    public Entreprise getEntrepriseById(Integer id) {
+        return repo.findById(id).orElse(null);
+    }
+
 }

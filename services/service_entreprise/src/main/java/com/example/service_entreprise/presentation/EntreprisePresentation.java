@@ -14,6 +14,7 @@ import jakarta.ws.rs.GET;
 import jakarta.ws.rs.POST;
 import jakarta.ws.rs.Path;
 import jakarta.ws.rs.Produces;
+import jakarta.ws.rs.QueryParam;
 
 @Path("entreprises")
 public class EntreprisePresentation {
@@ -23,8 +24,24 @@ public class EntreprisePresentation {
 
     @GET
     @Produces("application/json")
-    public List<EntrepriseDTO> getEntreprises(){
+    public List<EntrepriseDTO> getEntreprises(@QueryParam("id") Integer id){
         //ne pas oublier de mapper les données :)
+        if (id != null) {
+            Entreprise entrepriseBdd = service.getEntrepriseById(id);
+            EntrepriseMapper em = new EntrepriseMapper();
+            EntrepriseDTO entrepriseRetournee = em.mapEntrepriseToEntrepriseDTO(entrepriseBdd);
+            //partie Employes, on va interroger le module Employe
+            //et mettre à dispo les infos employés dans l'entreprise
+            if(entrepriseBdd.getIdEmployes() != null && !entrepriseBdd.getIdEmployes().isEmpty()){
+                //ici on fait l'appel au module Employe via la couche application
+                List<EmployeDAO> employes = service.getEmployes(entrepriseBdd.getIdEmployes());
+                //on map les employés dans l'objet de retour associé et on l'ajoute à son entreprise
+                entrepriseRetournee.setEmployes(em.mapEmployeDAOToEmployeDTO(employes));
+            }
+            List<EntrepriseDTO> entreprisesRetournees = new ArrayList<>();
+            entreprisesRetournees.add(entrepriseRetournee);
+            return entreprisesRetournees;
+        }
         EntrepriseMapper em = new EntrepriseMapper();
         //on récupère toutes les entreprises
         List<Entreprise> entreprisesBdd = service.getEntreprises();
