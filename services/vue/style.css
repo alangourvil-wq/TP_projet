@@ -1,128 +1,601 @@
-/* ===== Base ===== */
+/* =========================
+   Variables (design system partagé entre les 2 pages)
+   ========================= */
+
+:root {
+    --primary: #2563eb;
+    --primary-dark: #1d4ed8;
+    --primary-light: #eff6ff;
+
+    --background: #f6f8fc;
+    --card: #ffffff;
+
+    --text: #0f172a;
+    --text-secondary: #64748b;
+
+    --border: #e2e8f0;
+
+    --star-empty: #d1d5db;
+    --star-active: #fbbf24;
+
+    --radius: 14px;
+
+    --shadow: 0 4px 18px rgba(15, 23, 42, 0.06);
+}
+
+
+/* =========================
+   Global
+   ========================= */
+
 * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    background-color: var(--background);
 }
 
 body {
-  font-family: "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-  background-color: #f4f6f8;
-  color: #222;
+    margin: 0 auto;
+    padding: 45px 24px 70px;
+
+    max-width: 1100px;
+
+    font-family:
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        Roboto,
+        Arial,
+        sans-serif;
+
+    color: var(--text);
+
+    background-color: var(--background);
 }
 
-/* ===== Header ===== */
+/* On supprime les <br> utilisés pour l'espacement dans le HTML */
+body > br {
+    display: none;
+}
+
+
+/* =========================
+   Titres génériques
+   ========================= */
+
+body > h1,
+header h1 {
+    margin: 0 0 28px;
+
+    font-size: 38px;
+    font-weight: 750;
+
+    letter-spacing: -1.2px;
+    line-height: 1.2;
+}
+
+body > h2 {
+    margin: 0 0 15px;
+
+    font-size: 25px;
+    font-weight: 700;
+
+    letter-spacing: -0.4px;
+}
+
+
+/* =========================
+   Header + nav (page listing)
+   ========================= */
+
 header {
-  background: linear-gradient(135deg, #4a3fb5, #6c63ff);
-  color: #fff;
-  padding: 24px 40px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  gap: 12px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 12px;
+
+    padding: 26px 30px;
+    margin-bottom: 32px;
+
+    background: linear-gradient(135deg, var(--primary-dark), var(--primary));
+    color: #fff;
+
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
 }
 
 header h1 {
-  font-size: 1.6rem;
-  font-weight: 600;
+    margin: 0;
+    font-size: 28px;
 }
 
 header nav ul {
-  list-style: none;
-  display: flex;
-  gap: 24px;
+    list-style: none;
+    display: flex;
+    gap: 24px;
 }
 
 header nav a {
-  color: #fff;
-  text-decoration: none;
-  font-weight: 500;
-  opacity: 0.9;
-  transition: opacity 0.2s ease;
+    color: #fff;
+    text-decoration: none;
+    font-weight: 500;
+    opacity: 0.9;
+    transition: opacity 0.2s ease;
 }
 
 header nav a:hover {
-  opacity: 1;
-  text-decoration: underline;
+    opacity: 1;
+    text-decoration: underline;
 }
 
-/* ===== Layout principal ===== */
-main {
-  max-width: 1100px;
-  margin: 0 auto;
-  padding: 40px 24px;
+
+/* =========================
+   Tables (page détail)
+   ========================= */
+
+body > table {
+    width: 100%;
+
+    margin: 0 0 22px;
+
+    border-collapse: separate;
+    border-spacing: 0;
+
+    background: var(--card);
+
+    border: 1px solid var(--border) !important;
+    border-radius: var(--radius);
+
+    overflow: hidden;
+
+    box-shadow: var(--shadow);
 }
 
-/* ===== Grille de cartes ===== */
+body > table td {
+    padding: 17px 22px;
+
+    border: none !important;
+    border-bottom: 1px solid var(--border) !important;
+
+    font-size: 15px;
+}
+
+body > table tr:last-child td {
+    border-bottom: none !important;
+}
+
+body > table tr:first-child td {
+    font-weight: 650;
+}
+
+body > table tr {
+    transition: background-color 0.15s ease;
+}
+
+body > table tr:hover {
+    background-color: #f8fafc;
+}
+
+
+/* =========================
+   Notation (page détail)
+   ========================= */
+
+#notation {
+    display: grid;
+
+    grid-template-columns: 1fr auto;
+    grid-template-rows: auto auto;
+
+    align-items: center;
+
+    gap: 10px 30px;
+
+    position: relative;
+
+    width: 100%;
+
+    margin: 32px 0 38px;
+
+    padding: 26px 30px;
+
+    background: var(--card);
+
+    border: 1px solid #dbeafe;
+    border-radius: 16px;
+
+    box-shadow: 0 5px 20px rgba(37, 99, 235, 0.07);
+
+    overflow: hidden;
+}
+
+/* Barre bleue à gauche */
+#notation::before {
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+    left: 0;
+
+    width: 5px;
+    height: 100%;
+
+    background: var(--primary);
+}
+
+#notation h2 {
+    grid-column: 1 / -1;
+
+    margin: 0 0 5px;
+
+    font-size: 24px;
+    font-weight: 700;
+
+    letter-spacing: -0.4px;
+}
+
+#notation p {
+    margin: 0;
+
+    color: var(--text-secondary);
+
+    font-size: 16px;
+}
+
+#note-moyenne {
+    margin: 0 5px;
+
+    font-size: 34px;
+    font-weight: 750;
+
+    color: var(--primary);
+}
+
+
+/* =========================
+   Étoiles (page détail)
+   ========================= */
+
+#etoiles {
+    display: inline-flex;
+
+    direction: rtl;
+
+    align-items: center;
+
+    gap: 3px;
+
+    padding: 6px 10px;
+
+    border-radius: 10px;
+
+    background: #f8fafc;
+}
+
+#etoiles input {
+    display: none;
+}
+
+#etoiles label {
+    font-size: 38px;
+
+    line-height: 1;
+
+    color: var(--star-empty);
+
+    cursor: pointer;
+
+    user-select: none;
+
+    transition:
+        color 0.15s ease,
+        transform 0.15s ease;
+}
+
+#etoiles label:hover,
+#etoiles label:hover ~ label {
+    color: var(--star-active);
+
+    transform: translateY(-2px);
+}
+
+#etoiles input:checked ~ label {
+    color: var(--star-active);
+}
+
+
+/* =========================
+   Formulaire (page détail)
+   ========================= */
+
+#Form {
+    width: 100%;
+
+    margin: 28px 0;
+
+    padding: 28px 30px;
+
+    background: var(--card);
+
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+
+    box-shadow: var(--shadow);
+}
+
+#Form p {
+    margin: 0 0 20px;
+}
+
+#Form p:last-child {
+    margin-bottom: 0;
+}
+
+#Form label {
+    font-size: 14px;
+    font-weight: 600;
+
+    color: #334155;
+}
+
+#Form input[type="text"],
+#Form textarea {
+    width: 100%;
+
+    margin-top: 7px;
+
+    padding: 11px 13px;
+
+    font-family: inherit;
+    font-size: 15px;
+
+    color: var(--text);
+
+    background: #f8fafc;
+
+    border: 1px solid var(--border);
+    border-radius: 9px;
+
+    outline: none;
+
+    transition:
+        border-color 0.15s ease,
+        box-shadow 0.15s ease;
+}
+
+#Form input[type="text"]:focus,
+#Form textarea:focus {
+    border-color: var(--primary);
+
+    background: white;
+
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.10);
+}
+
+#Form textarea {
+    min-height: 100px;
+
+    resize: vertical;
+}
+
+#Form input[type="radio"] {
+    margin-top: 10px;
+    margin-right: 6px;
+
+    accent-color: var(--primary);
+}
+
+#Form button {
+    padding: 11px 22px;
+
+    border: none;
+    border-radius: 9px;
+
+    background: var(--primary);
+
+    color: white;
+
+    font-size: 15px;
+    font-weight: 650;
+
+    cursor: pointer;
+
+    transition:
+        background-color 0.15s ease,
+        transform 0.15s ease,
+        box-shadow 0.15s ease;
+}
+
+#Form button:hover {
+    background: var(--primary-dark);
+
+    transform: translateY(-1px);
+
+    box-shadow: 0 5px 14px rgba(37, 99, 235, 0.22);
+}
+
+#Form button:active {
+    transform: translateY(0);
+}
+
+
+/* =========================
+   Tableau créé par JS (page détail)
+   ========================= */
+
+#myTable {
+    width: 100%;
+
+    margin: 25px 0;
+
+    border-collapse: separate;
+    border-spacing: 0;
+
+    background: white;
+
+    border: 1px solid var(--border) !important;
+    border-radius: var(--radius);
+
+    overflow: hidden;
+
+    box-shadow: var(--shadow);
+}
+
+#myTable td {
+    padding: 14px 18px;
+
+    border: none !important;
+    border-bottom: 1px solid var(--border) !important;
+}
+
+#myTable thead {
+    background: #f8fafc;
+}
+
+
+/* =========================
+   Footer (page détail)
+   ========================= */
+
+hr {
+    margin: 40px 0 20px;
+
+    border: none;
+    border-top: 1px solid var(--border);
+}
+
+body > p:last-of-type {
+    margin: 0;
+
+    text-align: center;
+
+    color: var(--text-secondary);
+
+    font-size: 13px;
+}
+
+
+/* =========================
+   Grille de cartes (page listing)
+   ========================= */
+
 #entreprises-container {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-  gap: 24px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 24px;
 }
 
-/* ===== Carte entreprise ===== */
 .carte-entreprise {
-  background: #fff;
-  border-radius: 12px;
-  overflow: hidden;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
-  display: flex;
-  flex-direction: column;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+    display: flex;
+    flex-direction: column;
+
+    background: var(--card);
+
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+
+    overflow: hidden;
+
+    box-shadow: var(--shadow);
+
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 .carte-entreprise:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+    transform: translateY(-4px);
+    box-shadow: 0 8px 20px rgba(15, 23, 42, 0.12);
 }
 
 .image-entreprise {
-  width: 100%;
-  height: 160px;
-  object-fit: cover;
-  background-color: #dfe3e8;
+    width: 100%;
+    height: 160px;
+    object-fit: cover;
+    background-color: var(--border);
 }
 
 .nom-entreprise {
-  font-size: 1.1rem;
-  font-weight: 600;
-  padding: 16px 16px 4px;
+    padding: 16px 16px 4px;
+
+    font-size: 1.1rem;
+    font-weight: 650;
 }
 
 .note-entreprise {
-  padding: 0 16px;
-  color: #f5a623;
-  font-size: 1rem;
-  letter-spacing: 1px;
+    padding: 4px 16px 0;
+
+    color: var(--star-active);
+    font-size: 1rem;
+    letter-spacing: 1px;
 }
 
 .lien-detail {
-  margin: 16px;
-  margin-top: auto;
-  align-self: flex-start;
-  padding: 8px 16px;
-  background-color: #6c63ff;
-  color: #fff;
-  text-decoration: none;
-  font-size: 0.9rem;
-  font-weight: 500;
-  border-radius: 6px;
-  transition: background-color 0.2s ease;
+    margin: 16px;
+    margin-top: auto;
+    align-self: flex-start;
+
+    padding: 9px 18px;
+
+    background-color: var(--primary);
+    color: #fff;
+
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 600;
+
+    border-radius: 8px;
+
+    transition: background-color 0.15s ease, transform 0.15s ease;
 }
 
 .lien-detail:hover {
-  background-color: #4a3fb5;
+    background-color: var(--primary-dark);
+    transform: translateY(-1px);
 }
 
-/* ===== Responsive ===== */
-@media (max-width: 480px) {
-  header {
-    padding: 16px 20px;
-  }
 
-  main {
-    padding: 24px 16px;
-  }
+/* =========================
+   Responsive (2 pages)
+   ========================= */
+
+@media (max-width: 700px) {
+
+    body {
+        padding: 28px 16px 50px;
+    }
+
+    body > h1,
+    header h1 {
+        font-size: 30px;
+    }
+
+    header {
+        padding: 20px;
+    }
+
+    #notation {
+        display: block;
+        padding: 22px;
+    }
+
+    #notation p {
+        margin-bottom: 15px;
+    }
+
+    #etoiles label {
+        font-size: 34px;
+    }
+
+    #Form {
+        padding: 22px;
+    }
+
+    #entreprises-container {
+        gap: 16px;
+    }
 }
