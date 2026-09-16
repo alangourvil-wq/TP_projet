@@ -8,52 +8,76 @@ import org.springframework.beans.factory.annotation.Autowired;
 import com.example.service_entreprise.application.EmployeDAO;
 import com.example.service_entreprise.application.Entreprise;
 import com.example.service_entreprise.application.EntrepriseService;
+import com.example.service_entreprise.application.NoteService;
 
 import jakarta.ws.rs.Consumes;
 import jakarta.ws.rs.GET;
 import jakarta.ws.rs.POST;
 import jakarta.ws.rs.Path;
+import jakarta.ws.rs.PathParam;
 import jakarta.ws.rs.Produces;
 
 @Path("entreprises")
 public class EntreprisePresentation {
-    //permet à Spring de récupérer l'instance EntrepriseService afin de manipuler son contenu
+
     @Autowired
     private EntrepriseService service;
+
+    @Autowired
+    private NoteService noteService;
 
     @GET
     @Produces("application/json")
     public List<EntrepriseDTO> getEntreprises(){
-        //ne pas oublier de mapper les données :)
         EntrepriseMapper em = new EntrepriseMapper();
-        //on récupère toutes les entreprises
         List<Entreprise> entreprisesBdd = service.getEntreprises();
-        //cette liste nous sert d'objet de retour
         List<EntrepriseDTO> entreprisesRetournees = new ArrayList<>();
-        //dans cette partie, on transforme les données en EntrepriseDTO
+
         for(Entreprise e : entreprisesBdd){
-            EntrepriseDTO entrepriseAAjouter = new EntrepriseDTO();
-            entrepriseAAjouter = em.mapEntrepriseToEntrepriseDTO(e);
-            //partie Employes, on va interroger le module Employe
-            //et mettre à dispo les infos employés dans chaque entreprise
+            EntrepriseDTO entrepriseAAjouter = em.mapEntrepriseToEntrepriseDTO(e);
+
             if(e.getIdEmployes() != null && !e.getIdEmployes().isEmpty()){
-                //ici onfait l'appel au module Employe via la couche application
                 List<EmployeDAO> employes = service.getEmployes(e.getIdEmployes());
-                //on map les employés dans l'objet de retour associé et on l'ajoute à son entreprise
                 entrepriseAAjouter.setEmployes(em.mapEmployeDAOToEmployeDTO(employes));
             }
-            //on ajoute l'entreprise mappée dans le résultat de la requête
+
+            // ajout de la moyenne de note pour l'affichage dans le listing
+            entrepriseAAjouter.setMoyenneNote(noteService.getMoyenne(e.getId()));
+
             entreprisesRetournees.add(entrepriseAAjouter);
         }
         return entreprisesRetournees;
     }
 
-    //verbe de création
+    // endpoint de détail, utilisé par la page détail de l'entreprise
+    @GET
+    @Path("{id}")
+    @Produces("application/json")
+    public EntrepriseDTO getEntreprise(@PathParam("id") int id){
+        EntrepriseMapper em = new EntrepriseMapper();
+        Entreprise e = service.getEntrepriseById(id);
+        EntrepriseDTO dto = em.mapEntrepriseToEntrepriseDTO(e);
+
+        if(e.getIdEmployes() != null && !e.getIdEmployes().isEmpty()){
+            List<EmployeDAO> employes = service.getEmployes(e.getIdEmployes());
+            dto.setEmployes(em.mapEmployeDAOToEmployeDTO(employes));
+        }
+
+        dto.setMoyenneNote(noteService.getMoyenne(id));
+        return dto;
+    }
+
     @POST
-    //permet de dire que le webservice attend un json avec la requête
     @Consumes("application/json")
     public void creationEntreprise(CreationEntrepriseDTO entrepriseDTO){
         Entreprise entrepriseToSave = new EntrepriseMapper().mapEntrepriseDTOToEntreprise(entrepriseDTO);
         service.creationEntreprise(entrepriseToSave);
+    }
+
+    @POST
+    @Path("{id}/notes")
+    @Consumes("application/json")
+    public void noterEntreprise(@PathParam("id") int id, NoteDTO noteDTO){
+        noteService.ajouterNote(id, noteDTO.getValeur());
     }
 }

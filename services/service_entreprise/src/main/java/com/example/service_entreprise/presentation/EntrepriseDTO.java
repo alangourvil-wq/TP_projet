@@ -8,6 +8,7 @@ public class EntrepriseDTO {
     private int id;
     private String nom;
     private List<EmployeDTO> employes;
+    private double moyenneNote;
 
     public EntrepriseDTO() {}
 
@@ -45,4 +46,7 @@ public class EntrepriseDTO {
     public void setEmployes(List<EmployeDTO> employes) {
         this.employes = employes;
     }
+
+    public double getMoyenneNote() { return moyenneNote; }
+    public void setMoyenneNote(double moyenneNote) { this.moyenneNote = moyenneNote; }
 }

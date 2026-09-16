@@ -1,8 +1,12 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
+        <meta charset="UTF-8">
     <title>Page de détail</title>
+    <!-- Styles pour les étoiles -->
+
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js"></script>
 </head>
 <body>
 
@@ -21,6 +25,41 @@
         <tr><td>Image</td></tr>
         <tr><td>Nom</td></tr>
     </table>
+
+    <!-- Bloc Notation de l'entreprise -->
+    <section id="notation">
+
+    <h2>Notation de l'entreprise</h2>
+
+    <p>
+        Note moyenne :
+        <span id="note-moyenne">0</span> / 5
+    </p>
+
+    <div id="etoiles">
+
+    <input type="radio" id="etoile5" name="note" value="5">
+    <label for="etoile5">★</label>
+
+    <input type="radio" id="etoile4" name="note" value="4">
+    <label for="etoile4">★</label>
+
+    <input type="radio" id="etoile3" name="note" value="3">
+    <label for="etoile3">★</label>
+
+    <input type="radio" id="etoile2" name="note" value="2">
+    <label for="etoile2">★</label>
+
+    <input type="radio" id="etoile1" name="note" value="1">
+    <label for="etoile1">★</label>
+
+</div>
+
+
+
+</section>
+
+<br>
 
     <h2>Employés</h2>
 

@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.example.service_entreprise.infrastructure.EntrepriseRepository;
+import com.example.service_entreprise.infrastructure.NoteRepository;
 
 import jakarta.ws.rs.client.Client;
 import jakarta.ws.rs.client.ClientBuilder;
@@ -20,7 +21,7 @@ public class EntrepriseService {
     //permet de récupérer l'instance de EntrepriseRepository dans Spring et de manipuler JPA à travers cette dernière
     @Autowired
     private EntrepriseRepository repo;
-
+    
     public List<Entreprise> getEntreprises(){
         return repo.findAll();//retourne toutes les entreprises contenues en bdd
     }
@@ -49,4 +50,9 @@ public class EntrepriseService {
             client.close();
         }
     }
+
+    public Entreprise getEntrepriseById(int id){
+    return repo.findById(id).orElseThrow();
+    }
+
 }
