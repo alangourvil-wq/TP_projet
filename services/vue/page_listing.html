@@ -1,34 +1,49 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-      <h1>Page Listing</h1>
-  <nav>
-    <ul>
-      <li><a href="#accueil">Accueil</a></li>
-    </ul>
-  </nav>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Liste des entreprises</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js"></script>
 </head>
+<body onload="afficherEntreprises()">
 
-</header> 
-<body> 
-<table>
-  <h2>Liste des pages</h2>
-  <tr>
-    <th>Image</th>
-    <th>Nom</th>
-    <th>Detail</th>
-  </tr>
-  <tr>
-    <td><img src="image1.jpg" alt="Image 1"></td>
-    <td>Super entreprise</td>
-    <td><a href="page_detail.html">Détail</a></td>
-  </tr>
-  <tr>
-    <td><img src="image2.jpg" alt="Image 2"></td>
-    <td>AMAZINGGGG</td>
-    <td><a href="page_detail.html">Détail</a></td>
-  </tr>
+  <header>
+    <h1>Notation d'Entreprises</h1>
+    <nav>
+      <ul>
+        <li><a href="#accueil">Accueil</a></li>
+      </ul>
+    </nav>
+  </header>
 
-</table>
-</body>  
+  <main>
+    <section id="entreprises-container">
+
+      <article class="carte-entreprise" data-id="1">
+        <img class="image-entreprise" src="image1.jpg" alt="entreprise 1">
+        <h2 class="nom-entreprise">Entreprise 1</h2>
+        <div class="note-entreprise">★★★★☆ (4.2)</div>
+        <a class="lien-detail" href="page_detail.html?id=1">Voir détail</a>
+      </article>
+
+      <article class="carte-entreprise" data-id="2">
+        <img class="image-entreprise" src="image2.jpg" alt="entreprise 2">
+        <h2 class="nom-entreprise">Entreprise 2</h2>
+        <div class="note-entreprise">★★★☆☆ (3.0)</div>
+        <a class="lien-detail" href="page_detail.html?id=2">Voir détail</a>
+      </article>
+
+      <article class="carte-entreprise" data-id="3">
+        <img class="image-entreprise" src="image3.jpg" alt="entreprise 3">
+        <h2 class="nom-entreprise">Entreprise 3</h2>
+        <div class="note-entreprise">★★★★★ (5.0)</div>
+        <a class="lien-detail" href="page_detail.html?id=3">Voir détail</a>
+      </article>
+
+    </section>
+  </main>
+
+</body>
+</html>
