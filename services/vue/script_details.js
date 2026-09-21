@@ -12,6 +12,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const messageNote = document.getElementById("message-note");
 
     var note_moyenne = 0;
+    var nombre_notes = 0;
 
     fetch(`http://localhost:8080/api/entreprises/${idEntreprise}/moyenne`)
         .then((response) => {
@@ -28,6 +29,20 @@ document.addEventListener('DOMContentLoaded', function() {
             console.error("Erreur lors de la récupération de la moyenne :", error);
         });
     
+        fetch(`http://localhost:8080/api/entreprises/${idEntreprise}/notes`)
+        .then((response) => {
+            if (!response.ok) {
+                throw new Error("Réponse non valide");
+            }
+            return response.json();
+        })
+        .then((nombre) => {
+            nombre_notes = nombre;
+            console.log("Nombre de notes récupéré :", nombre_notes);
+        })
+        .catch((error) => {
+            console.error("Erreur lors de la récupération du nombre de notes :", error);
+        });
 
     async function chargerDetail() {
         try {
@@ -42,6 +57,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 const entreprise = entreprises[0];
                 document.getElementById("nom-entreprise").textContent = entreprise.nom;
                 document.getElementById("note-moyenne").textContent = note_moyenne.toFixed(2);
+                document.getElementById("nombre-notes").textContent = nombre_notes;
                 afficherEmployes(entreprise.employes || []);
 
             })

@@ -32,4 +32,9 @@ public class NoteService {
         }
         return somme / notes.size();
     }
+
+    public double getNombreNotes(long idEntreprise){
+        List<Note> notes = repo.findByIdEntreprise(idEntreprise);
+        return notes.size();
+    }
 }
