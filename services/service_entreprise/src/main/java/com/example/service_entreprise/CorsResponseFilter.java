@@ -18,7 +18,7 @@ public class CorsResponseFilter
     public void filter(ContainerRequestContext requestContext) throws IOException {
         if ("OPTIONS".equalsIgnoreCase(requestContext.getMethod())) {
             Response.ResponseBuilder response = Response.ok();
-            ajouterEntetesCors(response.getHeaders(), requestContext);
+            ajouterEntetesCors(response, requestContext);
             requestContext.abortWith(response.build());
         }
     }
@@ -46,5 +46,22 @@ public class CorsResponseFilter
                 requestedHeaders == null ? "Content-Type" : requestedHeaders
         );
         headers.putSingle("Access-Control-Max-Age", "3600");
+    }
+
+    private void ajouterEntetesCors(
+            Response.ResponseBuilder response,
+            ContainerRequestContext requestContext
+    ) {
+        response.header("Access-Control-Allow-Origin", "*");
+        response.header("Access-Control-Allow-Methods", "GET, POST, OPTIONS");
+
+        String requestedHeaders = requestContext.getHeaderString(
+                "Access-Control-Request-Headers"
+        );
+        response.header(
+                "Access-Control-Allow-Headers",
+                requestedHeaders == null ? "Content-Type" : requestedHeaders
+        );
+        response.header("Access-Control-Max-Age", "3600");
     }
 }
