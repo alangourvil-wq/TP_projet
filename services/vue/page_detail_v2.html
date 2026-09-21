@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Détail de l'entreprise</title>
+
+    <link rel="stylesheet" href="style_v2.css">
+</head>
+
+<body class="detail-page">
+
+    <h1 id="nom-entreprise">Chargement...</h1>
+
+
+    <section id="notation">
+
+        <h2>Notation de l'entreprise</h2>
+
+
+        <div class="notation-content">
+
+
+            <!-- Image entreprise -->
+            <div class="company-image-box">
+
+                <div class="image-placeholder">
+                    <div class="image-icon">▧</div>
+
+                    <span>
+                        Image de<br>
+                        l'entreprise
+                    </span>
+                </div>
+
+                <img
+                    id="entreprise-image"
+                    alt="Image de l'entreprise"
+                >
+
+            </div>
+
+
+
+            <!-- Note moyenne -->
+            <div class="average-section">
+
+                <p class="average-title">
+                    Note moyenne :
+                </p>
+
+                <div class="average-value">
+
+                    <span id="note-moyenne">
+                        0
+                    </span>
+
+                    <span class="average-max">
+                        / 5
+                    </span>
+
+                </div>
+
+
+                <div class="avis-count">
+                    <span class="avis-icon">♟</span>
+
+                    <span id="nombre-avis">
+                        0
+                    </span>
+
+                    <span>
+                        avis
+                    </span>
+                </div>
+
+            </div>
+
+
+
+            <div class="notation-separator"></div>
+
+
+
+            <!-- Note utilisateur -->
+            <div class="user-rating-section">
+
+                <div id="etoiles">
+
+                    <input
+                        type="radio"
+                        id="etoile5"
+                        name="note"
+                        value="5"
+                    >
+                    <label for="etoile5">★</label>
+
+
+                    <input
+                        type="radio"
+                        id="etoile4"
+                        name="note"
+                        value="4"
+                    >
+                    <label for="etoile4">★</label>
+
+
+                    <input
+                        type="radio"
+                        id="etoile3"
+                        name="note"
+                        value="3"
+                    >
+                    <label for="etoile3">★</label>
+
+
+                    <input
+                        type="radio"
+                        id="etoile2"
+                        name="note"
+                        value="2"
+                    >
+                    <label for="etoile2">★</label>
+
+
+                    <input
+                        type="radio"
+                        id="etoile1"
+                        name="note"
+                        value="1"
+                    >
+                    <label for="etoile1">★</label>
+
+                </div>
+
+
+                <button
+                    id="btn-valider-note"
+                    type="button"
+                >
+                    <span class="button-icon">
+                        ➤
+                    </span>
+
+                    Valider ma note
+                </button>
+
+
+                <p id="message-note"></p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <h2 class="employees-title">
+        Employés
+    </h2>
+
+
+    <table id="table-employes">
+
+        <thead>
+            <tr>
+                <th>Nom</th>
+            </tr>
+        </thead>
+
+        <tbody id="employees-body">
+        </tbody>
+
+    </table>
+
+
+
+    <hr>
+
+
+    <p class="footer-text">
+        Footer : copyright
+    </p>
+
+
+    <script src="script_details.js"></script>
+
+</body>
+
+</html>
