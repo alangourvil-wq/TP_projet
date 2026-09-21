@@ -58,7 +58,6 @@ body {
 }
 
 
-/* 去掉 HTML 里用来撑间距的 br */
 body > br {
     display: none;
 }
@@ -212,7 +211,6 @@ body > table tr:hover td {
 }
 
 
-/* 蓝色竖线 */
 #notation::before {
     content: "";
 
@@ -343,13 +341,11 @@ body > table tr:hover td {
 }
 
 
-/* 隐藏 radio */
 #etoiles input {
     display: none;
 }
 
 
-/* 星星默认状态 */
 #etoiles label {
     font-size: 38px;
 
@@ -368,7 +364,6 @@ body > table tr:hover td {
 }
 
 
-/* hover 当前星星及前面的星星 */
 #etoiles label:hover,
 #etoiles label:hover ~ label {
     color: var(--star-active);
@@ -384,7 +379,6 @@ body > table tr:hover td {
 }
 
 
-/* 选中的星星 */
 #etoiles input:checked ~ label {
     color: var(--star-active);
 
@@ -410,223 +404,6 @@ body > h2 {
     color: var(--text);
 
     animation: fadeUp 0.7s ease-out;
-}
-
-
-/* =========================
-   Formulaire
-   ========================= */
-
-#Form {
-    width: 100%;
-
-    margin: 28px 0;
-
-    padding: 28px 30px;
-
-    background-color: var(--card);
-
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
-
-    box-shadow: var(--shadow);
-
-    animation: fadeUp 0.8s ease-out;
-
-    transition:
-        transform 0.25s ease,
-        box-shadow 0.25s ease,
-        border-color 0.25s ease;
-}
-
-
-#Form:hover {
-    border-color: #cbd5e1;
-
-    box-shadow:
-        0 10px 28px rgba(15, 23, 42, 0.09);
-}
-
-
-#Form p {
-    margin: 0 0 20px;
-}
-
-
-#Form p:last-child {
-    margin-bottom: 0;
-}
-
-
-#Form label {
-    font-size: 14px;
-    font-weight: 600;
-
-    color: #334155;
-}
-
-
-/* =========================
-   Inputs texte
-   ========================= */
-
-#Form input[type="text"],
-#Form textarea {
-    width: 100%;
-
-    margin-top: 7px;
-
-    padding: 12px 14px;
-
-    font-family: inherit;
-    font-size: 15px;
-
-    color: var(--text);
-
-    background-color: #f8fafc;
-
-    border: 1px solid var(--border);
-    border-radius: 9px;
-
-    outline: none;
-
-    transition:
-        border-color 0.2s ease,
-        box-shadow 0.2s ease,
-        background-color 0.2s ease,
-        transform 0.2s ease;
-}
-
-
-#Form input[type="text"]:focus,
-#Form textarea:focus {
-    transform: translateY(-1px);
-
-    border-color: var(--primary);
-
-    background-color: white;
-
-    box-shadow:
-        0 0 0 4px rgba(37, 99, 235, 0.10);
-}
-
-
-#Form textarea {
-    min-height: 105px;
-
-    resize: vertical;
-}
-
-
-/* =========================
-   Radio expérience
-   ========================= */
-
-#Form input[type="radio"] {
-    margin-top: 10px;
-    margin-right: 6px;
-
-    accent-color: var(--primary);
-
-    cursor: pointer;
-}
-
-
-/* =========================
-   Bouton Envoyer
-   ========================= */
-
-#Form button {
-    padding: 11px 22px;
-
-    border: none;
-    border-radius: 9px;
-
-    background:
-        linear-gradient(
-            135deg,
-            var(--primary),
-            var(--primary-dark)
-        );
-
-    color: white;
-
-    font-size: 15px;
-    font-weight: 650;
-
-    cursor: pointer;
-
-    box-shadow:
-        0 5px 14px rgba(37, 99, 235, 0.18);
-
-    transition:
-        transform 0.2s ease,
-        box-shadow 0.2s ease,
-        background-color 0.2s ease;
-}
-
-
-#Form button:hover {
-    transform: translateY(-2px);
-
-    box-shadow:
-        0 9px 20px rgba(37, 99, 235, 0.26);
-}
-
-
-#Form button:active {
-    transform: scale(0.97);
-}
-
-
-/* =========================
-   Tableau généré par JS
-   ========================= */
-
-#myTable {
-    width: 100%;
-
-    margin: 25px 0;
-
-    border-collapse: separate;
-    border-spacing: 0;
-
-    background-color: white;
-
-    border: 1px solid var(--border) !important;
-    border-radius: var(--radius);
-
-    overflow: hidden;
-
-    box-shadow: var(--shadow);
-
-    animation: fadeUp 0.8s ease-out;
-}
-
-
-#myTable td {
-    padding: 14px 18px;
-
-    border: none !important;
-    border-bottom: 1px solid var(--border) !important;
-
-    transition:
-        background-color 0.18s ease;
-}
-
-
-#myTable tr:last-child td {
-    border-bottom: none !important;
-}
-
-
-#myTable thead {
-    background-color: #f8fafc;
-}
-
-
-#myTable tbody tr:hover td {
-    background-color: #f8fafc;
 }
 
 
@@ -693,12 +470,7 @@ body > p:last-of-type {
         font-size: 34px;
     }
 
-    #Form {
-        padding: 22px;
-    }
-
-    body > table td,
-    #myTable td {
+    body > table td {
         padding: 13px;
     }
 
