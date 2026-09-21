@@ -8,11 +8,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import com.example.service_entreprise.application.EmployeDAO;
 import com.example.service_entreprise.application.Entreprise;
 import com.example.service_entreprise.application.EntrepriseService;
+import com.example.service_entreprise.application.NoteService;
 
 import jakarta.ws.rs.Consumes;
 import jakarta.ws.rs.GET;
 import jakarta.ws.rs.POST;
 import jakarta.ws.rs.Path;
+import jakarta.ws.rs.PathParam;
 import jakarta.ws.rs.Produces;
 import jakarta.ws.rs.QueryParam;
 
@@ -72,5 +74,22 @@ public class EntreprisePresentation {
     public void creationEntreprise(CreationEntrepriseDTO entrepriseDTO){
         Entreprise entrepriseToSave = new EntrepriseMapper().mapEntrepriseDTOToEntreprise(entrepriseDTO);
         service.creationEntreprise(entrepriseToSave);
+    }
+
+    @Autowired
+    private NoteService noteService;
+
+    @GET
+    @Path("{id}/moyenne")
+    @Produces("application/json")
+    public double getMoyenne(@PathParam("id") long id) {
+        return noteService.getMoyenne(id);
+    }
+
+    @POST
+    @Path("{id}/notes")
+    @Consumes("application/json")
+    public void noterEntreprise(@PathParam("id") int id, NoteDTO noteDTO){
+        noteService.ajouterNote(id, noteDTO.getValeur());
     }
 }
