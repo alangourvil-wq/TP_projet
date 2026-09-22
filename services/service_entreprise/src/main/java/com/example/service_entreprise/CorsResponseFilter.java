@@ -17,9 +17,7 @@ public class CorsResponseFilter
     @Override
     public void filter(ContainerRequestContext requestContext) throws IOException {
         if ("OPTIONS".equalsIgnoreCase(requestContext.getMethod())) {
-            Response.ResponseBuilder response = Response.ok();
-            ajouterEntetesCors(response.getHeaders(), requestContext);
-            requestContext.abortWith(response.build());
+            requestContext.abortWith(Response.ok().build());
         }
     }
 

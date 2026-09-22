@@ -9,11 +9,27 @@ import com.example.service_entreprise.application.Entreprise;
 
 public class EntrepriseMapper {
     public EntrepriseDTO mapEntrepriseToEntrepriseDTO(Entreprise entreprise){
-        return new EntrepriseDTO(entreprise.getId(), entreprise.getNom());
+        return new EntrepriseDTO(
+            entreprise.getId(),
+            entreprise.getNom(),
+            null,
+            entreprise.getImageUrl(),
+            entreprise.getDescription(),
+            entreprise.getLieu(),
+            entreprise.getDomaine()
+        );
     }
 
     public Entreprise mapEntrepriseDTOToEntreprise(CreationEntrepriseDTO entrepriseDTO){
-        return new Entreprise(entrepriseDTO.getId(), entrepriseDTO.getNom(),entrepriseDTO.getIdEmployes());
+        return new Entreprise(
+            entrepriseDTO.getId(),
+            entrepriseDTO.getNom(),
+            entrepriseDTO.getIdEmployes(),
+            entrepriseDTO.getImageUrl(),
+            entrepriseDTO.getDescription(),
+            entrepriseDTO.getLieu(),
+            entrepriseDTO.getDomaine()
+        );
     }
 
 	public List<EmployeDTO> mapEmployeDAOToEmployeDTO(List<EmployeDAO> employes) {

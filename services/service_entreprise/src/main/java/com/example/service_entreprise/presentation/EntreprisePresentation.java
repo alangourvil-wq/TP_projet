@@ -86,10 +86,24 @@ public class EntreprisePresentation {
         return noteService.getMoyenne(id);
     }
 
+    @GET
+    @Path("{id}/notes")
+    @Produces("application/json")
+    public double getNombreNotes(@PathParam("id") long id) {
+        return noteService.getNombreNotes(id);
+    }
+
     @POST
     @Path("{id}/notes")
     @Consumes("application/json")
     public void noterEntreprise(@PathParam("id") int id, NoteDTO noteDTO){
         noteService.ajouterNote(id, noteDTO.getValeur());
+    }
+
+    @GET
+    @Path("{id}/repartition-notes")
+    @Produces("application/json")
+    public List<Integer> getRepartitionNotes(@PathParam("id") long id) {
+        return noteService.getRepartitionNotes(id);
     }
 }

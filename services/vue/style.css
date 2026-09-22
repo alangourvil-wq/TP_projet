@@ -92,45 +92,51 @@ body > h2 {
    Header + nav (page listing)
    ========================= */
 
-header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    gap: 12px;
-
-    padding: 26px 30px;
+.entete-site {
+    padding-bottom: 24px;
     margin-bottom: 32px;
 
-    background: linear-gradient(135deg, var(--primary-dark), var(--primary));
-    color: #fff;
-
-    border-radius: var(--radius);
-    box-shadow: var(--shadow);
+    border-bottom: 1px solid var(--border);
 }
 
-header h1 {
-    margin: 0;
-    font-size: 28px;
-}
+.marque {
+    display: inline-flex;
+    align-items: center;
+    gap: 14px;
 
-header nav ul {
-    list-style: none;
-    display: flex;
-    gap: 24px;
-}
-
-header nav a {
-    color: #fff;
+    color: inherit;
     text-decoration: none;
-    font-weight: 500;
-    opacity: 0.9;
-    transition: opacity 0.2s ease;
 }
 
-header nav a:hover {
-    opacity: 1;
-    text-decoration: underline;
+.marque-logo {
+    flex: 0 0 72px;
+
+    width: 72px;
+    height: 72px;
+
+    object-fit: contain;
+
+    background: #fff;
+
+    border: 1px solid var(--border);
+    border-radius: 12px;
+}
+
+.marque-texte {
+    display: flex;
+    flex-direction: column;
+}
+
+.marque-nom {
+    font-size: 1.3rem;
+    font-weight: 750;
+    letter-spacing: -0.4px;
+    color: var(--text);
+}
+
+.marque-slogan {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
 }
 
 
@@ -482,80 +488,158 @@ body > p:last-of-type {
 
 
 /* =========================
-   Grille de cartes (page listing)
+   Liste de cartes (page listing)
    ========================= */
 
-#entreprises-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-    gap: 24px;
+main > h1 {
+    margin-bottom: 24px;
+
+    font-size: 32px;
+    font-weight: 750;
+    letter-spacing: -0.8px;
+}
+
+#liste-entreprises {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
 }
 
 .carte-entreprise {
     display: flex;
     flex-direction: column;
 
-    background: var(--card);
+    padding: 20px 24px;
 
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
+    background: #f4f6f8;
 
-    overflow: hidden;
+    border: 1px solid transparent;
+    border-radius: 10px;
 
-    box-shadow: var(--shadow);
-
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    transition: background-color 0.15s ease, border-color 0.15s ease;
 }
 
 .carte-entreprise:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 8px 20px rgba(15, 23, 42, 0.12);
+    background: #ffffff;
+    border-color: var(--border);
+    box-shadow: var(--shadow);
 }
 
-.image-entreprise {
-    width: 100%;
-    height: 160px;
-    object-fit: cover;
-    background-color: var(--border);
+/* Catégorie : tout en haut à droite de la carte */
+.categorie-entreprise {
+    align-self: flex-end;
+
+    margin-bottom: 10px;
+    padding: 2px 9px;
+
+    color: var(--primary);
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.3px;
+    text-transform: uppercase;
+
+    background: var(--primary-light);
+    border-radius: 999px;
+}
+
+/* Entête : logo + nom */
+.entete-entreprise {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.logo-entreprise {
+    flex: 0 0 56px;
+
+    width: 56px;
+    height: 56px;
+
+    object-fit: contain;
+
+    background: #fff;
+
+    border: 1px solid var(--border);
+    border-radius: 10px;
 }
 
 .nom-entreprise {
-    padding: 16px 16px 4px;
-
-    font-size: 1.1rem;
+    font-size: 1.15rem;
     font-weight: 650;
+    letter-spacing: -0.3px;
+}
+
+.description-entreprise {
+    margin: 12px 0 0;
+
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    line-height: 1.5;
+}
+
+.description-entreprise:empty {
+    display: none;
+}
+
+/* Ligne du bas : note, avis, employés, lien détail */
+.stats-entreprise {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 6px;
+
+    margin-top: 14px;
+
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+}
+
+.stats-entreprise > * + *::before {
+    content: "·";
+    margin-right: 6px;
+    color: var(--border);
+}
+
+/* Lieu : poussé tout en bas à droite de la carte */
+.lieu-entreprise {
+    margin-left: auto;
+}
+
+.lieu-entreprise::before {
+    content: none;
+}
+
+.lieu-entreprise:empty {
+    display: none;
 }
 
 .note-entreprise {
-    padding: 4px 16px 0;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
 
+    color: var(--text);
+    font-weight: 600;
+}
+
+.etoile-note {
     color: var(--star-active);
-    font-size: 1rem;
-    letter-spacing: 1px;
+}
+
+.note-entreprise.sans-note {
+    color: var(--text-secondary);
+    font-style: italic;
+    font-weight: 400;
 }
 
 .lien-detail {
-    margin: 16px;
-    margin-top: auto;
-    align-self: flex-start;
-
-    padding: 9px 18px;
-
-    background-color: var(--primary);
-    color: #fff;
-
+    color: var(--primary);
     text-decoration: none;
-    font-size: 0.9rem;
     font-weight: 600;
-
-    border-radius: 8px;
-
-    transition: background-color 0.15s ease, transform 0.15s ease;
 }
 
 .lien-detail:hover {
-    background-color: var(--primary-dark);
-    transform: translateY(-1px);
+    text-decoration: underline;
 }
 
 
@@ -569,13 +653,14 @@ body > p:last-of-type {
         padding: 28px 16px 50px;
     }
 
-    body > h1,
-    header h1 {
+    body > h1 {
         font-size: 30px;
     }
 
-    header {
-        padding: 20px;
+    .marque-logo {
+        flex-basis: 56px;
+        width: 56px;
+        height: 56px;
     }
 
     #notation {
@@ -595,7 +680,7 @@ body > p:last-of-type {
         padding: 22px;
     }
 
-    #entreprises-container {
+    #liste-entreprises {
         gap: 16px;
     }
 }

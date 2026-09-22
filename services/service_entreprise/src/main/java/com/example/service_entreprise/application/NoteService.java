@@ -1,5 +1,7 @@
 package com.example.service_entreprise.application;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,4 +34,24 @@ public class NoteService {
         }
         return somme / notes.size();
     }
+
+    public double getNombreNotes(long idEntreprise){
+        List<Note> notes = repo.findByIdEntreprise(idEntreprise);
+        return notes.size();
+    }
+
+    public List<Integer> getRepartitionNotes(long idEntreprise) {
+        List<Note> notes = repo.findByIdEntreprise(idEntreprise);
+
+        List<Integer> repartition = new ArrayList<>(Arrays.asList(0, 0, 0, 0, 0));
+
+        for (Note n : notes) {
+            int valeur = n.getValeur();
+            repartition.set(valeur - 1, repartition.get(valeur - 1) + 1);
+        }
+
+        return repartition;
+    }
+
+    
 }
