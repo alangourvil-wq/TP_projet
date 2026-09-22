@@ -58,6 +58,9 @@ document.addEventListener('DOMContentLoaded', function() {
                 document.getElementById("nom-entreprise").textContent = entreprise.nom;
                 document.getElementById("note-moyenne").textContent = note_moyenne.toFixed(2);
                 document.getElementById("nombre-notes").textContent = nombre_notes;
+                document.getElementById("lieu-entreprise").textContent = entreprise.lieu;
+                document.getElementById("description-entreprise").textContent = entreprise.description;
+                document.getElementById("image-entreprise").src = entreprise.imageUrl;
                 afficherEmployes(entreprise.employes || []);
 
             })

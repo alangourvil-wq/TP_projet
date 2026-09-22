@@ -28,7 +28,7 @@ fetch("http://localhost:8080/api/entreprises")
 
             const lienDetail = document.createElement("a");
             lienDetail.className = "lien-detail";
-            lienDetail.href = `page_detail.html?id=${entreprise.id}`;
+            lienDetail.href = `page_detail_v3.html?id=${entreprise.id}`;
             lienDetail.textContent = "Voir détail";
 
             article.append(image, nom, note, lienDetail);
