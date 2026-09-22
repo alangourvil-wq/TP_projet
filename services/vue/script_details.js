@@ -13,6 +13,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     var note_moyenne = 0;
     var nombre_notes = 0;
+    var repartition_notes = [];
 
     fetch(`http://localhost:8080/api/entreprises/${idEntreprise}/moyenne`)
         .then((response) => {
@@ -42,6 +43,21 @@ document.addEventListener('DOMContentLoaded', function() {
         })
         .catch((error) => {
             console.error("Erreur lors de la récupération du nombre de notes :", error);
+        });
+
+    fetch(`http://localhost:8080/api/entreprises/${idEntreprise}/repartition-notes`)
+        .then((response) => {
+            if (!response.ok) {
+                throw new Error("Réponse non valide");
+            }
+            return response.json();
+        })
+        .then((repartition) => {
+            repartition_notes = repartition;
+            console.log("Répartition des notes récupérée :", repartition_notes);
+        })
+        .catch((error) => {
+            console.error("Erreur lors de la récupération de la répartition des notes :", error);
         });
 
     async function chargerDetail() {

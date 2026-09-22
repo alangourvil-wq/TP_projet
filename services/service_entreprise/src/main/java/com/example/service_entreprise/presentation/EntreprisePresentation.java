@@ -99,4 +99,11 @@ public class EntreprisePresentation {
     public void noterEntreprise(@PathParam("id") int id, NoteDTO noteDTO){
         noteService.ajouterNote(id, noteDTO.getValeur());
     }
+
+    @GET
+    @Path("{id}/repartition-notes")
+    @Produces("application/json")
+    public List<Integer> getRepartitionNotes(@PathParam("id") long id) {
+        return noteService.getRepartitionNotes(id);
+    }
 }
