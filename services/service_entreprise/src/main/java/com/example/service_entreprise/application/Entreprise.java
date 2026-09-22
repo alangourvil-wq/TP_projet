@@ -2,7 +2,9 @@ package com.example.service_entreprise.application;
 
 import java.util.List;
 
+import jakarta.persistence.ElementCollection;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -13,6 +15,8 @@ public class Entreprise {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
     private String nom;
+
+    @ElementCollection(fetch = FetchType.EAGER)
     private List<Integer> idEmployes;
     private String imageUrl;
     private String description;

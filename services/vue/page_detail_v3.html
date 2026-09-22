@@ -8,6 +8,7 @@
     <title>Détail de l'entreprise</title>
 
     <link rel="stylesheet" href="style_v3.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
 
 <body class="detail-page">
@@ -16,36 +17,21 @@
     <h1 id="nom-entreprise">Nom de l'entreprise</h1>
 
 
-    <!-- Informations de l'entreprise -->
     <div class="company-info">
 
         <div class="company-info-item">
-            <span class="info-icon">📍</span>
-
-            <!-- interface: localisation -->
-            <span id="lieu-entreprise">
-                Localisation
-            </span>
+            <i class="fa-solid fa-location-dot info-icon"></i>
+            <span id="lieu-entreprise">Localisation</span>
         </div>
 
-
         <div class="company-info-item">
-            <span class="info-icon">👥</span>
-
-            <!-- interface: nombre d'employés -->
-            <span id="nombre-employes">
-                Nombre d'employés
-            </span>
+            <i class="fa-solid fa-users info-icon"></i>
+            <span id="nombre-employes">Nombre d'employés</span>
         </div>
 
-
         <div class="company-info-item">
-            <span class="info-icon">💼</span>
-
-            <!-- interface: domaine -->
-            <span id="entreprise-domaine">
-                Domaine
-            </span>
+            <i class="fa-solid fa-briefcase info-icon"></i>
+            <span id="domaine-entreprise">Domaine</span>
         </div>
 
     </div>
@@ -62,14 +48,6 @@
 
             <!-- Image entreprise -->
             <div class="company-image-box">
-
-                <div class="image-placeholder">
-                    <span class="image-placeholder-icon">▧</span>
-                    <span>
-                        Image de<br>
-                        l'entreprise
-                    </span>
-                </div>
 
                 <!-- interface: image de l'entreprise -->
                 <img

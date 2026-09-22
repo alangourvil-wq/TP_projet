@@ -135,6 +135,9 @@ document.addEventListener('DOMContentLoaded', function() {
                 if(document.getElementById("nombre-employes")) {
                     document.getElementById("nombre-employes").textContent = entreprise.employes.length;
                 }
+                if(document.getElementById("domaine-entreprise")) {
+                    document.getElementById("domaine-entreprise").textContent = entreprise.domaine;
+                }
                 afficherEmployes(entreprise.employes || []);
 
             })

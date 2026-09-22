@@ -53,7 +53,7 @@ async function afficherEntreprises() {
 
         const lienDetail = document.createElement("a");
         lienDetail.className = "lien-detail";
-        lienDetail.href = `page_detail.html?id=${entreprise.id}`;
+        lienDetail.href = `page_detail_v3.html?id=${entreprise.id}`;
         lienDetail.textContent = "Voir détail";
 
         const lieu = document.createElement("span");
