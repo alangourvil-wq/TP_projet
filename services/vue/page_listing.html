@@ -1,49 +1,27 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Liste des entreprises</title>
-  <link rel="stylesheet" href="style.css">
-  <script src="script.js"></script>
+    <meta charset="UTF-8">
+    <title>Liste des entreprises</title>
+    <link rel="stylesheet" href="style.css">
 </head>
-<body onload="afficherEntreprises()">
 
-  <header>
-    <h1>Notation d'Entreprises</h1>
-    <nav>
-      <ul>
-        <li><a href="#accueil">Accueil</a></li>
-      </ul>
-    </nav>
-  </header>
+<body>
+    <header class="entete-site">
+        <a href="#accueil" class="marque">
+            <img src="GlassWindow_logo.jpg" alt="Logo GlassWindow" class="marque-logo">
+            <span class="marque-texte">
+                <span class="marque-nom">GlassWindow</span>
+                <span class="marque-slogan">Votre site web pour noter des entreprises.</span>
+            </span>
+        </a>
+    </header>
 
-  <main>
-    <section id="entreprises-container">
+    <main>
+        <h1>Liste des entreprises</h1>
+        <section id="liste-entreprises" aria-label="Liste des entreprises"></section>
+    </main>
 
-      <article class="carte-entreprise" data-id="1">
-        <img class="image-entreprise" src="image1.jpg" alt="entreprise 1">
-        <h2 class="nom-entreprise">Entreprise 1</h2>
-        <div class="note-entreprise">★★★★☆ (4.2)</div>
-        <a class="lien-detail" href="page_detail.html?id=1">Voir détail</a>
-      </article>
-
-      <article class="carte-entreprise" data-id="2">
-        <img class="image-entreprise" src="image2.jpg" alt="entreprise 2">
-        <h2 class="nom-entreprise">Entreprise 2</h2>
-        <div class="note-entreprise">★★★☆☆ (3.0)</div>
-        <a class="lien-detail" href="page_detail.html?id=2">Voir détail</a>
-      </article>
-
-      <article class="carte-entreprise" data-id="3">
-        <img class="image-entreprise" src="image3.jpg" alt="entreprise 3">
-        <h2 class="nom-entreprise">Entreprise 3</h2>
-        <div class="note-entreprise">★★★★★ (5.0)</div>
-        <a class="lien-detail" href="page_detail.html?id=3">Voir détail</a>
-      </article>
-
-    </section>
-  </main>
-
+    <script src="script.js"></script>
 </body>
 </html>

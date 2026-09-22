@@ -1,180 +1,56 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-        <meta charset="UTF-8">
+    <meta charset="UTF-8">
     <title>Page de détail</title>
-    <!-- Styles pour les étoiles -->
-
     <link rel="stylesheet" href="style.css">
-    <script src="script.js"></script>
 </head>
 <body>
 
-    <h1>Page de détail</h1>
-
-    <!-- Bloc Titre / Description -->
-    <table border="1">
-        <tr><td>Titre</td></tr>
-        <tr><td>Description site / page</td></tr>
-    </table>
-
-    <br>
-
-    <!-- Bloc Image / Nom -->
-    <table border="1">
-        <tr><td>Image</td></tr>
-        <tr><td>Nom</td></tr>
-    </table>
+    <h1 id="nom-entreprise">Chargement...</h1>
 
     <!-- Bloc Notation de l'entreprise -->
     <section id="notation">
+        <h2>Notation de l'entreprise</h2>
 
-    <h2>Notation de l'entreprise</h2>
+        <p>
+            Note moyenne :
+            <span id="note-moyenne">0</span> / 5
+        </p>
 
-    <p>
-        Note moyenne :
-        <span id="note-moyenne">0</span> / 5
-    </p>
+        <div id="etoiles">
+            <input type="radio" id="etoile5" name="note" value="5">
+            <label for="etoile5">★</label>
 
-    <div id="etoiles">
+            <input type="radio" id="etoile4" name="note" value="4">
+            <label for="etoile4">★</label>
 
-    <input type="radio" id="etoile5" name="note" value="5">
-    <label for="etoile5">★</label>
+            <input type="radio" id="etoile3" name="note" value="3">
+            <label for="etoile3">★</label>
 
-    <input type="radio" id="etoile4" name="note" value="4">
-    <label for="etoile4">★</label>
+            <input type="radio" id="etoile2" name="note" value="2">
+            <label for="etoile2">★</label>
 
-    <input type="radio" id="etoile3" name="note" value="3">
-    <label for="etoile3">★</label>
+            <input type="radio" id="etoile1" name="note" value="1">
+            <label for="etoile1">★</label>
+        </div>
 
-    <input type="radio" id="etoile2" name="note" value="2">
-    <label for="etoile2">★</label>
-
-    <input type="radio" id="etoile1" name="note" value="1">
-    <label for="etoile1">★</label>
-
-</div>
-
-
-
-</section>
-
-<br>
+        <button id="btn-valider-note" type="button">Valider ma note</button>
+        <p id="message-note"></p>
+    </section>
 
     <h2>Employés</h2>
 
-    <!-- Tableau Employés -->
-    <table border="1">
+    <table border="1" id="table-employes">
         <tr>
             <td>Nom</td>
-            <td>type</td>
-            <td>niveau</td>
-        </tr>
-        <tr>
-            <td>Nom</td>
-            <td>type</td>
-            <td>niveau</td>
-        </tr>
-        <tr>
-            <td>Nom</td>
-            <td>type</td>
-            <td>niveau</td>
         </tr>
     </table>
-
-    <br>
-
-    <!-- Formulaire -->
-    <form id="Form" action="#" method="post">
-        <p>
-            <label for="nom">Nom</label>
-            <input type="text" id="nom">
-        </p>
-        
-        <p>
-            <label for="prenom">Prénom</label>
-            <input type="text" id="prenom">
-        </p>
-
-        <p>
-            expérience professionnelle dans la société<br>
-            <input type="radio" name="exp" id="exp1"> <label for="exp1">&lt;1an</label><br>
-            <input type="radio" name="exp" id="exp2"> <label for="exp2">entre 1 et 10 ans</label><br>
-            <input type="radio" name="exp" id="exp3"> <label for="exp3">&gt;10ans</label>
-        </p>
-
-        <p>
-            <label for="commentaire">Commentaire</label><br>
-            <textarea id="commentaire" rows="4" cols="40"></textarea>
-        </p>
-
-        <p>
-            <button type="submit" onclick="return true;">Envoyer</button>
-        </p>
-    </form>
 
     <hr>
 
     <p>Footer : copyright</p>
 
+    <script src="script_details.js"></script>
 </body>
 </html>
-<script>
-    document.addEventListener('DOMContentLoaded', function() {
-        const form = document.getElementById('Form');
-        let table;
-
-        // 1. Création ou récupération du tableau
-        if (!document.getElementById("myTable")) {
-            table = document.createElement("table");
-            table.id = "myTable";
-            table.border = "1"; // Optionnel pour voir les bordures
-            
-            var header = table.createTHead();
-            var row = header.insertRow(0);
-            
-            var cell1 = row.insertCell(0);
-            cell1.innerHTML = "<b>Nom</b>";
-            var cell2 = row.insertCell(1);
-            cell2.innerHTML = "<b>Prénom</b>";
-            var cell3 = row.insertCell(2);
-            cell3.innerHTML = "<b>Commentaire</b>";
-            var cell4 = row.insertCell(3);
-            cell4.innerHTML = "<b>Expérience</b>";
-
-            // Ajout du tableau dans la page (par exemple avant le formulaire ou à la fin du body)
-            document.body.appendChild(table);
-        } else {
-            table = document.getElementById("myTable");
-        }
-
-        // 2. Gestion de la soumission du formulaire
-        form.addEventListener('submit', function(event) {
-            event.preventDefault();
-
-            let nom = form.nom.value;
-            let prenom = form.prenom.value;
-            let commentaire = form.commentaire.value;
-
-            // Récupération de la valeur du bouton radio sélectionné
-            let expChecked = form.querySelector('input[name="exp"]:checked');
-            let experience = expChecked ? expChecked.value : "Non renseigné";
-
-            // 3. Ajout d'une nouvelle ligne dans le tableau
-            let newRow = table.insertRow();
-
-            let c1 = newRow.insertCell(0);
-            let c2 = newRow.insertCell(1);
-            let c3 = newRow.insertCell(2);
-            let c4 = newRow.insertCell(3);
-
-            c1.textContent = nom;
-            c2.textContent = prenom;
-            c3.textContent = commentaire;
-            c4.textContent = experience;
-
-            // Vider le formulaire après l'envoi
-            form.reset();
-        });
-    });
-</script>
