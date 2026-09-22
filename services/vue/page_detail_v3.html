@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Détail de l'entreprise</title>
+
+    <link rel="stylesheet" href="style_v3.css">
+</head>
+
+<body class="detail-page">
+
+    <!-- interface: nom de l'entreprise -->
+    <h1 id="nom-entreprise">Nom de l'entreprise</h1>
+
+
+    <!-- Informations de l'entreprise -->
+    <div class="company-info">
+
+        <div class="company-info-item">
+            <span class="info-icon">📍</span>
+
+            <!-- interface: localisation -->
+            <span id="lieu-entreprise">
+                Localisation
+            </span>
+        </div>
+
+
+        <div class="company-info-item">
+            <span class="info-icon">👥</span>
+
+            <!-- interface: nombre d'employés -->
+            <span id="nombre-employes">
+                Nombre d'employés
+            </span>
+        </div>
+
+
+        <div class="company-info-item">
+            <span class="info-icon">💼</span>
+
+            <!-- interface: domaine -->
+            <span id="entreprise-domaine">
+                Domaine
+            </span>
+        </div>
+
+    </div>
+
+
+    <!-- Notation -->
+    <section id="notation">
+
+        <h2>Notation de l'entreprise</h2>
+
+
+        <div class="notation-layout">
+
+
+            <!-- Image entreprise -->
+            <div class="company-image-box">
+
+                <div class="image-placeholder">
+                    <span class="image-placeholder-icon">▧</span>
+                    <span>
+                        Image de<br>
+                        l'entreprise
+                    </span>
+                </div>
+
+                <!-- interface: image de l'entreprise -->
+                <img
+                    id="image-entreprise"
+                    alt="Image de l'entreprise"
+                >
+
+            </div>
+
+
+            <!-- Résumé des notes -->
+            <div class="rating-summary">
+
+                <!-- interface: note moyenne -->
+                <div id="note-moyenne">
+                    0
+                </div>
+
+
+                <!-- interface: affichage visuel de la note moyenne -->
+                <div id="stars-moyenne">
+
+                    <span>☆</span>
+                    <span>☆</span>
+                    <span>☆</span>
+                    <span>☆</span>
+                    <span>☆</span>
+
+                </div>
+
+
+                <!-- interface: nombre total d'avis -->
+                <div class="avis-number">
+
+                    <span id="nombre-notes">
+                        0
+                    </span>
+
+                </div>
+
+
+                <p class="votre-note-title">
+                    Votre note
+                </p>
+
+
+                <!-- interface: note choisie -->
+                <div id="etoiles">
+
+                    <input type="radio" id="etoile5" name="note" value="5">
+                    <label for="etoile5">★</label>
+
+                    <input type="radio" id="etoile4" name="note" value="4">
+                    <label for="etoile4">★</label>
+
+                    <input type="radio" id="etoile3" name="note" value="3">
+                    <label for="etoile3">★</label>
+
+                    <input type="radio" id="etoile2" name="note" value="2">
+                    <label for="etoile2">★</label>
+
+                    <input type="radio" id="etoile1" name="note" value="1">
+                    <label for="etoile1">★</label>
+
+                </div>
+
+
+                <!-- Action : envoyer la note -->
+                <button
+                    id="btn-valider-note"
+                    type="button"
+                >
+                    Valider ma note
+                </button>
+
+
+                <!-- Frontend : message succès / erreur -->
+                <p id="message-note"></p>
+
+            </div>
+
+
+            <div class="notation-divider"></div>
+
+
+            <!-- Répartition des notes -->
+            <div class="rating-bars">
+
+
+                <div class="rating-row">
+
+                    <span class="rating-label">
+                        5 ★
+                    </span>
+
+                    <div class="bar-track">
+                        <div
+                            id="fill-5"
+                            class="bar-fill"
+                        ></div>
+                    </div>
+
+                    <!-- interface: nombre d'avis pour cette note -->
+                    <span
+                        id="count-5"
+                        class="rating-count"
+                    >
+                        0
+                    </span>
+
+                </div>
+
+
+                <div class="rating-row">
+
+                    <span class="rating-label">
+                        4 ★
+                    </span>
+
+                    <div class="bar-track">
+                        <div
+                            id="fill-4"
+                            class="bar-fill"
+                        ></div>
+                    </div>
+
+                    <!-- interface: nombre d'avis pour cette note -->
+                    <span
+                        id="count-4"
+                        class="rating-count"
+                    >
+                        0
+                    </span>
+
+                </div>
+
+
+                <div class="rating-row">
+
+                    <span class="rating-label">
+                        3 ★
+                    </span>
+
+                    <div class="bar-track">
+                        <div
+                            id="fill-3"
+                            class="bar-fill"
+                        ></div>
+                    </div>
+
+                    <!-- interface: nombre d'avis pour cette note -->
+                    <span
+                        id="count-3"
+                        class="rating-count"
+                    >
+                        0
+                    </span>
+
+                </div>
+
+
+                <div class="rating-row">
+
+                    <span class="rating-label">
+                        2 ★
+                    </span>
+
+                    <div class="bar-track">
+                        <div
+                            id="fill-2"
+                            class="bar-fill"
+                        ></div>
+                    </div>
+
+                    <!-- interface: nombre d'avis pour cette note -->
+                    <span
+                        id="count-2"
+                        class="rating-count"
+                    >
+                        0
+                    </span>
+
+                </div>
+
+
+                <div class="rating-row">
+
+                    <span class="rating-label">
+                        1 ★
+                    </span>
+
+                    <div class="bar-track">
+                        <div
+                            id="fill-1"
+                            class="bar-fill"
+                        ></div>
+                    </div>
+
+                    <!-- interface: nombre d'avis pour cette note -->
+                    <span
+                        id="count-1"
+                        class="rating-count"
+                    >
+                        0
+                    </span>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- Employés -->
+    <h2 class="employees-title">
+        Employés
+    </h2>
+
+
+    <table id="table-employes">
+
+        <thead>
+            <tr>
+                <th>Nom</th>
+            </tr>
+        </thead>
+
+
+        <!-- interface: liste des employés -->
+        <tbody id="employees-body">
+        </tbody>
+
+    </table>
+
+
+    <hr>
+
+
+    <p class="footer-text">
+        Footer : copyright
+    </p>
+
+
+    <script src="script_details.js"></script>
+
+</body>
+
+</html>

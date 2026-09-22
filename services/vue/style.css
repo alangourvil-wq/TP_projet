@@ -263,6 +263,19 @@ body > table tr:hover {
     color: var(--primary);
 }
 
+#nombre-notes::before {
+    content: "(";
+}
+
+#nombre-notes {
+    font-size: 22px;
+    font-weight: 400;
+}
+
+#nombre-notes::after {
+    content: ")";
+}
+
 
 /* =========================
    Étoiles (page détail)
