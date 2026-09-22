@@ -71,12 +71,27 @@ document.addEventListener('DOMContentLoaded', function() {
             })
             .then((entreprises) => {
                 const entreprise = entreprises[0];
-                document.getElementById("nom-entreprise").textContent = entreprise.nom;
-                document.getElementById("note-moyenne").textContent = note_moyenne.toFixed(2);
-                document.getElementById("nombre-notes").textContent = nombre_notes;
-                document.getElementById("lieu-entreprise").textContent = entreprise.lieu;
-                document.getElementById("description-entreprise").textContent = entreprise.description;
-                document.getElementById("image-entreprise").src = entreprise.imageUrl;
+                if(document.getElementById("nom-entreprise")) {
+                    document.getElementById("nom-entreprise").textContent = entreprise.nom;
+                }
+                if(document.getElementById("note-moyenne")) {
+                    document.getElementById("note-moyenne").textContent = note_moyenne.toFixed(2);
+                }
+                if(document.getElementById("nombre-notes")) {
+                    document.getElementById("nombre-notes").textContent = nombre_notes;
+                }
+                if(document.getElementById("lieu-entreprise")) {
+                    document.getElementById("lieu-entreprise").textContent = entreprise.lieu;
+                }
+                if(document.getElementById("description-entreprise")) {
+                    document.getElementById("description-entreprise").textContent = entreprise.description;
+                }
+                if(document.getElementById("image-entreprise")) {
+                    document.getElementById("image-entreprise").src = entreprise.imageUrl;
+                }
+                if(document.getElementById("nombre-employes")) {
+                    document.getElementById("nombre-employes").textContent = entreprise.employes.length;
+                }
                 afficherEmployes(entreprise.employes || []);
 
             })
