@@ -6,6 +6,9 @@ public class CreationEntrepriseDTO {
     private int id;
     private String nom;
     private List<Integer> idEmployes;
+    private String imageUrl;
+    private String description;
+    private String lieu;
 
     public CreationEntrepriseDTO(){}
 
@@ -13,6 +16,39 @@ public class CreationEntrepriseDTO {
         this.id = id;
         this.nom = nom;
         this.idEmployes = idEmployes;
+    }
+
+    public CreationEntrepriseDTO(int id, String nom, List<Integer> idEmployes, String imageUrl, String description, String lieu) {
+        this.id = id;
+        this.nom = nom;
+        this.idEmployes = idEmployes;
+        this.imageUrl = imageUrl;
+        this.description = description;
+        this.lieu = lieu;
+    }
+
+    public String getImageUrl() {
+        return imageUrl;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public String getLieu() {
+        return lieu;
+    }
+
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public void setLieu(String lieu) {
+        this.lieu = lieu;
     }
 
     public int getId() {

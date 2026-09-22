@@ -14,6 +14,9 @@ public class Entreprise {
     private int id;
     private String nom;
     private List<Integer> idEmployes;
+    private String imageUrl;
+    private String description;
+    private String lieu;
 
     public Entreprise(){}
 
@@ -28,6 +31,15 @@ public class Entreprise {
         this.idEmployes = idEmployes;
     }
 
+    public Entreprise(int id, String nom, List<Integer> idEmployes, String imageUrl, String description, String lieu) {
+        this.id = id;
+        this.nom = nom;
+        this.idEmployes = idEmployes;
+        this.imageUrl = imageUrl;
+        this.description = description;
+        this.lieu = lieu;
+    }
+
     public int getId() {
         return id;
     }
@@ -40,8 +52,32 @@ public class Entreprise {
         return nom;
     }
 
+    public String getImageUrl() {
+        return imageUrl;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
+    }
+
     public void setNom(String nom) {
         this.nom = nom;
+    }
+
+    public String getLieu() {
+        return lieu;
+    }
+
+    public void setLieu(String lieu) {
+        this.lieu = lieu;
     }
 
     public List<Integer> getIdEmployes() {

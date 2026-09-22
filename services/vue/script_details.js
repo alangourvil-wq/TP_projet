@@ -94,7 +94,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
             messageNote.textContent = "Note enregistrée, merci !";
             messageNote.style.color = "green";
-            chargerDetail();
 
         } catch (err) {
             console.error("Impossible d'envoyer la note :", err);
@@ -103,8 +102,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
-    // Bouton explicite : on lit la valeur cochée seulement au clic
-    document.getElementById("btn-valider-note").addEventListener("click", () => {
+    document.getElementById("btn-valider-note").addEventListener("click", async () => {
         const radioChecked = document.querySelector('#etoiles input[name="note"]:checked');
 
         if (!radioChecked) {
@@ -112,8 +110,8 @@ document.addEventListener('DOMContentLoaded', function() {
             messageNote.style.color = "orange";
             return;
         }
-
-        envoyerNote(parseInt(radioChecked.value, 10));
+        await envoyerNote(parseInt(radioChecked.value, 10));
+        window.location.reload();
     });
 
     chargerDetail();
