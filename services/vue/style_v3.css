@@ -284,6 +284,11 @@ body.detail-page {
 }
 
 
+#stars-moyenne span.empty {
+    color: var(--star-empty);
+}
+
+
 /* Nombre avis */
 
 .avis-number {

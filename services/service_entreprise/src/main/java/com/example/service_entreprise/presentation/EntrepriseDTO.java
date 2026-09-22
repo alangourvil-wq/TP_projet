@@ -11,6 +11,7 @@ public class EntrepriseDTO {
     private String imageUrl;
     private String description;
     private String lieu;
+    private String domaine;
 
 
     public EntrepriseDTO() {}
@@ -26,13 +27,22 @@ public class EntrepriseDTO {
         this.employes = employes;
     }
 
-    public EntrepriseDTO(int id, String nom, List<EmployeDTO> employes, String imageUrl, String description, String lieu) {
+    public EntrepriseDTO(int id, String nom, List<EmployeDTO> employes, String imageUrl, String description, String lieu, String domaine) {
         this.id = id;
         this.nom = nom;
         this.employes = employes;
         this.imageUrl = imageUrl;
         this.description = description;
+        this.domaine = domaine;
         this.lieu = lieu;
+    }
+
+    public String getDomaine() {
+        return domaine;
+    }
+
+    public void setDomaine(String domaine) {
+        this.domaine = domaine;
     }
 
     public String getImageUrl() {
